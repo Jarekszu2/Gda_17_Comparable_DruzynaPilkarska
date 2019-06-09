@@ -30,7 +30,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 
-public class DruzynaPilkarska {
+public class DruzynaPilkarska  implements Comparable<DruzynaPilkarska>{
 
     private String nazwaDruzyny;
     private int bramkiTrafione;
@@ -38,4 +38,25 @@ public class DruzynaPilkarska {
     private int meczeWygrane;
     private int meczePrzegrane;
     private int liczbaPunktow;
+
+    public int compareTo(DruzynaPilkarska o) {
+        if (this.liczbaPunktow > o.liczbaPunktow) {
+            return -1;
+        } else if (this.liczbaPunktow < o.liczbaPunktow) {
+            return 1;
+        }
+
+        if (this.bramkiTrafione > o.bramkiTrafione) {
+            return -1;
+        } else if (this.bramkiTrafione < o.bramkiTrafione) {
+            return 1;
+        }
+
+        if (this.bramkiStracone > o.bramkiStracone) {
+            return 1;
+        } else if (this.bramkiStracone < o.bramkiStracone) {
+            return -1;
+        }
+        return this.nazwaDruzyny.compareTo(o.nazwaDruzyny);
+    }
 }
